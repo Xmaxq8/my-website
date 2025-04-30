@@ -1,11 +1,11 @@
 const express = require('express');
-const { Client } = require('pg');  // استيراد مكتبة PostgreSQL
-const bodyParser = require('body-parser');
+const { Client } = require('pg'); // استيراد مكتبة PostgreSQL
+const bodyParser = require('body-parser'); // لتحليل البيانات الواردة
 
 const app = express();
 const port = 3000;
 
-// إعداد body-parser لتحليل البيانات المستلمة
+// إعداد body-parser لتحليل البيانات المستلمة من العميل
 app.use(bodyParser.json());
 
 // إعداد الاتصال بقاعدة البيانات (PostgreSQL) باستخدام الرابط الخارجي من Render
@@ -21,17 +21,29 @@ client.connect()
   .then(() => console.log('Connected to the database'))
   .catch(err => console.error('Connection error', err.stack));
 
-// مسار لإضافة الأزواج
+// مسار لإضافة الأزواج إلى قاعدة البيانات
 app.post('/add-couple', (req, res) => {
   const { coupleId, eggCount } = req.body;  // استقبال البيانات من المستخدم
 
-  // إدخال البيانات إلى قاعدة البيانات
+  // إدخال الزوج إلى قاعدة البيانات
   const query = 'INSERT INTO couples (couple_id, egg_count) VALUES ($1, $2)';
   client.query(query, [coupleId, eggCount], (err, result) => {
     if (err) {
-      return res.status(500).send('Error adding couple');  // في حالة الخطأ
+      return res.status(500).send('Error adding couple');
     }
-    res.status(200).send('Couple added successfully');  // إذا تم بنجاح
+    res.status(200).send('Couple added successfully');
+  });
+});
+
+// مسار لعرض الأزواج المخزنة في قاعدة البيانات
+app.get('/get-couples', (req, res) => {
+  const query = 'SELECT * FROM couples';  // جلب جميع الأزواج
+
+  client.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).send('Error fetching couples');
+    }
+    res.status(200).json(result.rows);  // إرسال الأزواج في شكل JSON
   });
 });
 
