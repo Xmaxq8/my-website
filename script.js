@@ -3,7 +3,7 @@ let selectedLanguage = 'ar';  // لغة البداية هي العربية
 let userData = {};
 
 // قائمة أسماء المستخدمين وكلمة المرور
-const validUsers = ['0000', '1111', '2222', '3333'];
+const validUsers = ['1111'];
 const validPassword = '1111';
 
 // اختيار اللغة وتحديث النصوص بناءً عليها
