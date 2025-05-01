@@ -1,71 +1,51 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>اختيار اللغة</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الأزواج</title>
+    <link rel="stylesheet" href="fa7a6477-13c8-40d2-92d9-02d89213befd.css">
 </head>
 <body>
 
-<!-- شاشة اختيار اللغة -->
-<div id="language-selection">
-    <h2>اختر اللغة / भाषा चुनें</h2>
-    <button onclick="selectLanguage('ar')">العربية</button>
-    <button onclick="selectLanguage('hi')">हिन्दी</button>
-</div>
+    <!-- اختيار اللغة -->
+    <section id="language-selection" style="display:block;">
+        <button onclick="selectLanguage('ar')">العربية</button>
+        <button onclick="selectLanguage('hi')">हिन्दी</button>
+    </section>
 
-<!-- شاشة تسجيل الدخول -->
-<div id="login-section" style="display:none;">
-    <h2 id="login-title"></h2>
-    <input type="text" id="username" placeholder="اسم المستخدم">
-    <input type="password" id="password" placeholder="كلمة المرور">
-    <button onclick="login()" id="login-button">تسجيل الدخول</button>
-    <p id="error-message"></p>
-</div>
+    <!-- تسجيل الدخول -->
+    <section id="login-section" style="display:none;">
+        <h1 id="login-title">تسجيل الدخول</h1>
+        <input type="text" id="username" placeholder="اسم المستخدم">
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <button id="login-button" onclick="login()">دخول</button>
+        <div id="error-message"></div>
+    </section>
 
-<!-- لوحة التحكم (التي تظهر بعد تسجيل الدخول بنجاح) -->
-<div id="dashboard" style="display:none;">
-    <h2 id="dashboard-title"></h2>
+    <!-- لوحة التحكم -->
+    <section id="dashboard" style="display:none;">
+        <h1 id="dashboard-title">لوحة التحكم</h1>
+        <button id="add-button" onclick="addNewRecord()">➕ إضافة زوج جديد</button>
 
-    <div id="sections-container">
+        <!-- جداول الأزواج -->
+        <div id="no-eggs-title"></div>
+        <table id="no-eggs-table"></table>
 
-        <!-- الأزواج التي لا تحتوي على بيض -->
-        <div class="section">
-            <h3 id="no-eggs-title"></h3>
-            <table id="no-eggs-table"></table>
-        </div>
+        <div id="with-eggs-title"></div>
+        <table id="with-eggs-table"></table>
 
-        <!-- الأزواج التي تحتوي على بيض -->
-        <div class="section">
-            <h3 id="with-eggs-title"></h3>
-            <table id="with-eggs-table"></table>
-        </div>
+        <div id="with-treatment-title"></div>
+        <table id="with-treatment-table"></table>
 
-        <!-- الأزواج التي تتلقى علاجًا -->
-        <div class="section">
-            <h3 id="with-treatment-title"></h3>
-            <table id="with-treatment-table"></table>
-        </div>
+        <div id="with-eggs-treatment-title"></div>
+        <table id="with-eggs-treatment-table"></table>
 
-        <!-- الأزواج التي تحتوي على بيض وتتلقى علاجًا -->
-        <div class="section">
-            <h3 id="with-eggs-treatment-title"></h3>
-            <table id="with-eggs-treatment-table"></table>
-        </div>
+        <!-- جداول الفراخ -->
+        <div id="chicks-title"></div>
+        <table id="chicks-table"></table>
+    </section>
 
-        <!-- عرض الفراخ تحت المراقبة -->
-        <div class="section">
-            <h3 id="chicks-title"></h3>
-            <table id="chicks-table"></table>
-        </div>
-
-    </div>
-
-    <!-- زر لإضافة سجل جديد -->
-    <button onclick="addNewRecord()" id="add-button">➕ إضافة سجل جديد</button>
-</div>
-
-<script src="script.js"></script>
-
+    <script src="b3092de7-5dfe-4069-a543-c1de1aafb8a5.js"></script>
 </body>
 </html>
