@@ -1,8 +1,8 @@
 const users = {
-    1111: "1111",
-    2222: "2222",
-    3333: "3333",
-    4444: "5555"
+    "1111": "1111",
+    "2222": "2222",
+    "3333": "3333",
+    "4444": "5555"
 };
 
 let couples = [];
@@ -59,7 +59,10 @@ function translatePage() {
 function login() {
     const user = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
+    
+    // تحقق من أن اسم المستخدم وكلمة المرور صحيحة
     if (users[user] === pass) {
+        // إخفاء صفحة تسجيل الدخول وعرض لوحة التحكم
         document.getElementById("login-section").style.display = "none";
         document.getElementById("dashboard").style.display = "block";
         loadCouples(); // تحميل الأزواج بعد تسجيل الدخول
@@ -175,3 +178,5 @@ function deleteRecord(index) {
         loadCouples();  // إعادة تحميل الأزواج بعد الحذف
     });
 }
+
+loadCouples();  // تحميل الأزواج عند بداية التحميل
