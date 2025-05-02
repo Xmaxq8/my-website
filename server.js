@@ -51,10 +51,15 @@ app.post('/login', (req, res) => {
 // API: إضافة زوج
 app.post('/add-couple', (req, res) => {
   const { coupleId, eggCount, treatment, treatmentStart, treatmentDays, hatchDate } = req.body;
+
+  // إذا لم يتم إدخال تاريخ الفقس، نستخدم التاريخ الحالي
+  const hatchDateToUse = hatchDate || new Date().toISOString().split('T')[0]; // يختار التاريخ الحالي إذا لم يتم إدخاله
+
   const query = `INSERT INTO couples 
     (couple_id, egg_count, treatment, treatment_start, treatment_days, hatch_date)
     VALUES (?, ?, ?, ?, ?, ?)`;
-  connection.query(query, [coupleId, eggCount, treatment, treatmentStart, treatmentDays, hatchDate], (err) => {
+  
+  connection.query(query, [coupleId, eggCount, treatment, treatmentStart, treatmentDays, hatchDateToUse], (err) => {
     if (err) return res.status(500).send('Error saving couple');
     res.status(200).send('Couple saved');
   });
@@ -81,10 +86,15 @@ app.delete('/delete-couple/:id', (req, res) => {
 app.put('/update-couple/:id', (req, res) => {
   const { id } = req.params;
   const { coupleId, eggCount, treatment, treatmentStart, treatmentDays, hatchDate } = req.body;
+
+  // إذا تم إدخال تاريخ الفقس، نستخدمه، وإذا لم يتم إدخاله نستخدم التاريخ الحالي
+  const hatchDateToUse = hatchDate || new Date().toISOString().split('T')[0];
+
   const query = `UPDATE couples SET 
     couple_id = ?, egg_count = ?, treatment = ?, treatment_start = ?, treatment_days = ?, hatch_date = ? 
     WHERE id = ?`;
-  connection.query(query, [coupleId, eggCount, treatment, treatmentStart, treatmentDays, hatchDate, id], (err) => {
+  
+  connection.query(query, [coupleId, eggCount, treatment, treatmentStart, treatmentDays, hatchDateToUse, id], (err) => {
     if (err) return res.status(500).send('Error updating couple');
     res.status(200).send('Couple updated');
   });
