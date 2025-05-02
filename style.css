@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #e3f2fd; /* تغيير اللون الخلفي إلى الأزرق الفاتح */
   margin: 0;
   padding: 0;
 }
@@ -14,18 +14,19 @@ input {
   padding: 10px;
   margin: 10px;
   width: 200px;
+  border: 1px solid #2196f3; /* وضع حدود باللون الأزرق */
 }
 
 button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #2196f3; /* الأزرق */
   color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #1976d2; /* الأزرق الداكن عند المرور */
 }
 
 table {
@@ -41,6 +42,6 @@ th, td {
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #2196f3;
   color: white;
 }
