@@ -14,35 +14,26 @@
         <button onclick="selectLanguage('hi')">हिन्दी</button>
     </section>
 
-    <!-- تسجيل الدخول -->
-    <section id="login-section" style="display:none;">
-        <h1 id="login-title">تسجيل الدخول</h1>
-        <input type="text" id="username" placeholder="اسم المستخدم">
-        <input type="password" id="password" placeholder="كلمة المرور">
-        <button id="login-button" onclick="login()">دخول</button>
-        <div id="error-message"></div>
-    </section>
-
     <!-- لوحة التحكم -->
-    <section id="dashboard" style="display:none;">
-        <h1 id="dashboard-title">لوحة التحكم</h1>
+    <section id="dashboard">
+        <h1>لوحة التحكم</h1>
         <button id="add-button" onclick="addNewRecord()">➕ إضافة زوج جديد</button>
 
         <!-- جداول الأزواج -->
-        <div id="no-eggs-title"></div>
+        <div id="no-eggs-title">الأزواج بدون بيض</div>
         <table id="no-eggs-table"></table>
 
-        <div id="with-eggs-title"></div>
+        <div id="with-eggs-title">الأزواج مع بيض</div>
         <table id="with-eggs-table"></table>
 
-        <div id="with-treatment-title"></div>
+        <div id="with-treatment-title">الأزواج مع علاج</div>
         <table id="with-treatment-table"></table>
 
-        <div id="with-eggs-treatment-title"></div>
+        <div id="with-eggs-treatment-title">الأزواج مع بيض وعلاج</div>
         <table id="with-eggs-treatment-table"></table>
 
         <!-- جداول الفراخ -->
-        <div id="chicks-title"></div>
+        <div id="chicks-title">الفراخ تحت المراقبة</div>
         <table id="chicks-table"></table>
     </section>
 
